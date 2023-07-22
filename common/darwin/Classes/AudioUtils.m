@@ -21,9 +21,9 @@
     bool success = [session setCategory:config.category withOptions:config.categoryOptions error:&error];
     if (!success)
       NSLog(@"ensureAudioSessionWithRecording[true]: setCategory failed due to: %@", error);
-    // success = [session setMode:config.mode error:&error];
-    // if (!success)
-    //  NSLog(@"ensureAudioSessionWithRecording[true]: setMode failed due to: %@", error);
+    success = [session setMode:config.mode error:&error];
+    if (!success)
+      NSLog(@"ensureAudioSessionWithRecording[true]: setMode failed due to: %@", error);
     [session unlockForConfiguration];
   } else if (!recording && (session.category == AVAudioSessionCategoryAmbient ||
                             session.category == AVAudioSessionCategorySoloAmbient)) {
